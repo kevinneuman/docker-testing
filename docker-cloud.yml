@@ -1,0 +1,17 @@
+web:
+  image: 'kevinneuman/docker-testing:latest'
+
+  # Redeploy app in case if it's image is updated.
+  autoredeploy: true
+
+  # Expose port 3000 of the container and map it to port 3000 of host machine (droplet)
+  ports:
+    - '3000:3000'
+
+  # Make it possible for app to call mongo host
+  links:
+    - mongo
+
+mongo:
+  # Build mongo container from official mongo image.
+  image: 'mongo:latest'
